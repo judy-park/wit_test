@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Instagram</title>
+        <link href="https://fonts.googleapis.com/css2?family=Norican&family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                background-color:rgb(250, 250, 250);
+                color:rgb(36, 36, 36);
+                font-family: 'Roboto', sans-serif;
+            }
+            .container{
+                margin:auto;
+                padding: 0 1rem;
+                max-width:60rem;
+                color:rgb(65, 65, 65);
+            }
+            .profile{
+                padding-top:5rem;
+            }
+            .profile_image {
+                float: left;
+                display: flex;
+                margin-left:4rem;
+                margin-right:5rem;
+                border: 1px solid rgb(230, 230, 230);
+                border-radius: 100%;
+            }
+            .profile_image img {
+                width:10rem;
+            }
+            .profile_info{
+                margin-top:-1rem;
+                margin-bottom:2rem;
+            }
+            .setting_id{
+                display:inline-block;
+                font-size:1.7rem;
+                font-weight:lighter;
+            }
+            .setting li{
+                display:inline-block;
+            }
+            .setting_button,
+            .setting_follow,
+            .setting_more,
+            .setting_dot{
+                display:inline-block;
+                font:inherit;
+                background:none;
+                border:none;
+                cursor:pointer;
+                color:rgb(37, 147, 238);
+            }
+            .setting_follow{
+                font-size:0.9rem;
+                background-color: rgb(37, 147, 238);
+                color:white;
+                border-radius:0.2rem;
+                line-height:2;
+                width:6rem;
+                margin-left:1rem;
+            }
+            .setting_more{ 
+                font-size: 0.9rem;
+                background-color: rgb(37, 147, 238);
+                color:white;border-radius:0.2rem;
+                line-height:2;
+                width:2rem;
+            }
+            .setting_dot{
+                color:rgb(65, 65, 65);
+            }
+            .info_act li{
+                display:inline-block;
+                line-height:1.5;
+                margin-right:2rem;
+            }
+            .follower,
+            .following{
+                cursor:pointer;
+            }
+            .list{
+                border-top:1px solid rgb(200, 200, 200);
+                margin-top:3rem;
+                text-align:center;
+            }
+            .list li{
+                display:inline-block;
+                margin:0 2rem;
+                font-size:0.8rem;
+            }
+            a:link { color: rgb(158, 158, 158); text-decoration: none;}
+            .post:visited { color: rgb(44, 44, 44); text-decoration: none;}
+            .post:hover { color:r rgb(44, 44, 44); text-decoration: none;}
+            .tag:visited { color: rgb(158, 158, 158); text-decoration: none;}
+            .tag:hover { color:rgb(158, 158, 158); text-decoration: none;}
+            .github_link:visited { color: rgb(55, 54, 145); text-decoration: none;}
+            .github_link:hover { color:r rgb(55, 54, 145); text-decoration: none;}
+
+            .gallery{
+                display: flex;
+                flex-wrap:wrap;
+            }
+            .picture{
+                position:relative;
+                color: #fff;
+                cursor: pointer;
+                margin:0.65rem;
+            }
+            .picture:hover .picture_info{
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 99%;
+                background-color: rgba(0, 0, 0, 0.3);
+                display: flex;          
+                justify-content: center;
+                align-items: center;
+            }
+            .picture img{
+                width:18rem;
+                height:18rem;
+            }
+            .picture_info{
+                display:none;
+            }
+            .picture_info li{
+                display:inline-block;
+                margin-right:2rem;
+            }
+
+            nav{
+                border-bottom: 1px solid rgb(220, 220, 220);
+                background-color: white;
+                position:fixed;
+                top:0px;
+                width:100%;
+                height:3.7rem;
+                text-align: center;
+            }
+            nav li{
+                display:inline-block;
+                line-height:1.5;
+                margin-right:9rem;
+            }
+            .homepage{
+                margin-left:7rem;
+                font-family: 'Norican', cursive;
+                font-size:1.6rem;
+                color:rgb(58, 58, 58);
+            }
+            .research{
+                text-align: center;
+                margin-left:8rem;
+                border:0.05rem solid rgb(230, 230, 230);
+                color:rgb(121, 121, 121);
+                border-radius:0.2rem;
+                height:1.8rem;
+                width:12rem;
+            }
+            .top_button{
+                display:inline-block;
+                font-size:1.5rem;
+                background:none;
+                border:none;
+                cursor:pointer;
+                color:rgb(65, 65, 65);
+            }
+            .top_button img {
+                border-radius: 50%;
+                width:1rem;
+                margin-bottom:0.05rem
+            }
+            .fa-circle{
+                position: relative;
+                right:1.66rem;
+            }
+
+            footer{
+                margin-bottom: 3rem;
+                text-align: center;
+                font-size:0.7rem;
+                color:gray;
+            }
+            .page_bottom_info li{  
+                display: inline-block;
+                max-width:60rem;
+                margin: 0 0.5rem;
+            }
+            .language{
+                display:none;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <main>
+            <div class="container">
+
+                <header class="profile">
+                    <div class="profile_image">
+                        <img src="github.png" alt="">
+                    </div>
+                    <section class="profile_info">
+                        <div class="info_setting">
+                            <ul class="setting">
+                                <li>
+                                    <span class="setting_id">github</span>
+                                </li>
+                                <li>
+                                    <button class="setting_button">
+                                        <script src="https://kit.fontawesome.com/10c7a645f6.js" crossorigin="anonymous"></script><i class="fas fa-check-circle"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="setting_follow"><strong>팔로우</strong></button>
+                                </li>
+                                <li>
+                                    <button class="setting_more">
+                                        <script src="https://kit.fontawesome.com/10c7a645f6.js" crossorigin="anonymous"></script><i class="fas fa-caret-down"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="setting_dot">
+                                        <scrip src="https://kit.fontawesome.com/10c7a645f6.js" crossorigin="anonymous"></script><i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="info_act">
+                            <ul>
+                                <li><span class="post">게시물 </span><strong>170</strong></li>
+                                <li><span class="follower">팔로워 </span><strong>132천</strong></li>
+                                <li><span class="following">팔로우 </span><strong>20</strong></li>
+                            </ul>
+                        </div>
+                        <div class="info_name">
+                            <strong>GitHub</strong><br>
+                            Built for developers.<br>
+                            <a href="https://github.com/readme/caleb-porzio" target="_blank" class="github_link">
+                                <strong>github.com/readme/devops</strong></a>                            
+                        </div>
+                    </section>
+                </header>
+
+                <div class="list">
+                    <ul>
+                        <li>
+                            <a class="post" href="http://127.0.0.1:5500/wit_test/instagram.html">
+                                <scrip src="https://kit.fontawesome.com/10c7a645f6.js" crossorigin="anonymous"></scrip><i class="fas fa-th"></i>
+                                <strong>게시물</strong>                       
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tag" href="#">
+                                <scrip src="https://kit.fontawesome.com/10c7a645f6.js" crossorigin="anonymous"></scrip><i class="fas fa-id-card-alt"></i>
+                                <strong>태그됨</strong>                     
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="gallery">
+                    <div class="picture" tabindex="0">
+                        <img src="black.jpg" class="gallery-image" alt="">
+                        <div class="picture_info">        
+                            <ul>
+                                <li class="picture_likes"><span class="hidden"></span><i class="fas fa-heart" aria-hidden="true"></i> 310</li>
+                                <li class="picture_comments"><span class="hidden"></span><i class="fas fa-comment" aria-hidden="true"></i> 60</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="picture" tabindex="0">
+                        <img src="black.jpg" class="gallery-image" alt="">
+                        <div class="picture_info">        
+                            <ul>
+                                <li class="picture_likes"><span class="hidden"></span><i class="fas fa-heart" aria-hidden="true"></i> 525</li>
+                                <li class="picture_comments"><span class="hidden"></span><i class="fas fa-comment" aria-hidden="true"></i> 160</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="picture" tabindex="0">
+                        <img src="black.jpg" class="gallery-image" alt="">
+                        <div class="picture_info">        
+                            <ul>
+                                <li class="picture_likes"><span class="hidden"></span><i class="fas fa-heart" aria-hidden="true"></i> 561</li>
+                                <li class="picture_comments"><span class="hidden"></span><i class="fas fa-comment" aria-hidden="true"></i> 62</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="picture" tabindex="0">
+                        <img src="black.jpg" class="gallery-image" alt="">
+                        <div class="picture_info">        
+                            <ul>
+                                <li class="picture_likes"><span class="hidden"></span><i class="fas fa-heart" aria-hidden="true"></i> 741</li>
+                                <li class="picture_comments"><span class="hidden"></span><i class="fas fa-comment" aria-hidden="true"></i> 60</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="picture" tabindex="0">
+                        <img src="black.jpg" class="gallery-image" alt="">
+                        <div class="picture_info">        
+                            <ul>
+                                <li class="picture_likes"><span class="hidden"></span><i class="fas fa-heart" aria-hidden="true"></i> 326</li>
+                                <li class="picture_comments"><span class="hidden"></span><i class="fas fa-comment" aria-hidden="true"></i> 42</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="picture" tabindex="0">
+                        <img src="black.jpg" class="gallery-image" alt="">
+                        <div class="picture_info">        
+                            <ul>
+                                <li class="picture_likes"><span class="hidden"></span><i class="fas fa-heart" aria-hidden="true"></i> 531</li>
+                                <li class="picture_comments"><span class="hidden"></span><i class="fas fa-comment" aria-hidden="true"></i> 72</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="picture" tabindex="0">
+                        <img src="black.jpg" class="gallery-image" alt="">
+                        <div class="picture_info">        
+                            <ul>
+                                <li class="picture_likes"><span class="hidden"></span><i class="fas fa-heart" aria-hidden="true"></i> 125</li>
+                                <li class="picture_comments"><span class="hidden"></span><i class="fas fa-comment" aria-hidden="true"></i> 52</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="picture" tabindex="0">
+                        <img src="black.jpg" class="gallery-image" alt="">
+                        <div class="picture_info">        
+                            <ul>
+                                <li class="picture_likes"><span class="hidden"></span><i class="fas fa-heart" aria-hidden="true"></i> 88</li>
+                                <li class="picture_comments"><span class="hidden"></span><i class="fas fa-comment" aria-hidden="true"></i> 25</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+            </div>
+        </main>
+        <nav>
+            <ul>
+                <li><a href="https://www.instagram.com/" class="homepage">Instagram</a></li>
+                <li><input type="text" class="research" placeholder="검색"></li>
+                <li>
+                    <button class="top_button"><i class="fas fa-home"></i>
+                    </button>
+                    <button class="top_button"><i class="fas fa-location-arrow"></i>
+                    </button>
+                    <button class="top_button"><i class="far fa-compass"></i>
+                    </button>
+                    <button class="top_button"><i class="far fa-heart"></i>
+                    </button>
+                    <button class="top_button">
+                        <img src="my_profile.jpg" alt="">
+                        <i class="far fa-circle"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <footer>
+            <ul class="page_bottom_info">
+                <li>소개</li>
+                <li>블로그</li>
+                <li>채용 정보</li>
+                <li>도움말</li>
+                <li>API</li>
+                <li>개인정보처리방침</li>
+                <li>약관</li>
+                <li>인기 계정</li>
+                <li>해시태그</li>
+                <li>위치</li>
+            </ul>
+            <ul class="page_bottom">
+                <select name="language">
+                    <option value="korean">한국어</option>
+                    <option value="english">English</option>
+                    <option value="french">French</option>
+                </select>
+                2021 Instagram from Facebook
+            </ul>
+        </footer>
+    </body>
+</html>
